@@ -1,5 +1,7 @@
 package dev._2lstudios.cleanmotd.bungee.listeners;
 
+import dev._2lstudios.cleanmotd.bungee.Main;
+import dev._2lstudios.cleanmotd.bungee.setterGetter;
 import dev._2lstudios.cleanmotd.bungee.variables.Variables;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -10,12 +12,16 @@ import net.md_5.bungee.event.EventHandler;
 
 import java.util.UUID;
 
+
 public class ProxyPingListener implements Listener {
 	private final Variables variables;
+	Main main;
 
 	public ProxyPingListener(final Variables variables) {
 		this.variables = variables;
 	}
+	
+	public static int playerCount = 0;
 
 	@EventHandler(priority = 64)
 	public void onProxyPing(final ProxyPingEvent event) {
@@ -28,10 +34,9 @@ public class ProxyPingListener implements Listener {
 		final ServerPing.Players players = response.getPlayers();
 		int onlinePlayers = players.getOnline();
 		int maxPlayers = players.getMax();
-
+		
 		if (variables.isFakePlayersEnabled()) {
-			onlinePlayers = onlinePlayers + variables.getFakePlayersAmount(onlinePlayers);
-
+			onlinePlayers = setterGetter.getCount() + players.getOnline();
 			players.setOnline(onlinePlayers);
 		}
 

@@ -12,7 +12,7 @@ public class Variables {
 	private final ConfigurationUtil configurationUtil;
 	private Collection<String> pinged = new HashSet<>();
 	private String[] motdMotds, sampleSamples;
-	private int cacheTime, maxPlayers, fakePlayersAmount;
+	private int cacheTime, maxPlayers, fakePlayersAmount, playerCount;
 	private boolean motdEnabled, sampleEnabled, protocolEnabled, cacheEnabled, maxPlayersJustOneMore, maxPlayersEnabled,
 			fakePlayersEnabled;
 	private String protocol, fakePlayersMode;
@@ -90,6 +90,14 @@ public class Variables {
 
 	public int getCacheTime() {
 		return cacheTime;
+	}
+	
+	public int getPlayerCount() {
+		return playerCount;
+	}
+	
+	public void setPlayerCount(int setPlayerCount){
+		playerCount = setPlayerCount;
 	}
 
 	public boolean isMaxPlayersEnabled() {
